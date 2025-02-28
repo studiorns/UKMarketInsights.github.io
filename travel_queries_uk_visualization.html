@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Travel Queries Forecast 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .chart-container {
+            margin-top: 30px;
+            margin-bottom: 50px;
+            height: 500px;
+        }
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .metric-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            width: calc(33% - 20px);
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .metric-card h3 {
+            margin-top: 0;
+            color: #555;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0066cc;
+            margin: 10px 0;
+        }
+        .metric-description {
+            color: #777;
+            font-size: 14px;
+        }
+        .insights {
+            margin-top: 40px;
+        }
+        .insight-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .insight-item:last-child {
+            border-bottom: none;
+        }
+        .table-container {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UK Travel Queries Forecast 2025</h1>
+        <p>This dashboard presents the forecast for UK travel queries in 2025 based on the multi-factor approach.</p>
+        
+        <div class="chart-container">
+            <canvas id="forecastChart"></canvas>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>Average 2024 Queries</h3>
+                <div class="metric-value">97.56</div>
+                <div class="metric-description">Average monthly indexed queries in 2024</div>
+            </div>
+            <div class="metric-card">
+                <h3>Conservative Growth</h3>
+                <div class="metric-value">46.3%</div>
+                <div class="metric-description">Year-over-year growth in Conservative scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>Moderate Growth</h3>
+                <div class="metric-value">53.2%</div>
+                <div class="metric-description">Year-over-year growth in Moderate scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>Ambitious Growth</h3>
+                <div class="metric-value">60.1%</div>
+                <div class="metric-description">Year-over-year growth in Ambitious scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>Peak Month</h3>
+                <div class="metric-value">October</div>
+                <div class="metric-description">Month with highest forecast queries</div>
+            </div>
+            <div class="metric-card">
+                <h3>Highest Growth Month</h3>
+                <div class="metric-value">May</div>
+                <div class="metric-description">Month with highest YoY growth</div>
+            </div>
+        </div>
+        
+        <div class="insights">
+            <h2>Key Insights</h2>
+            <div class="insight-item">
+                <h3>Strong Growth Potential</h3>
+                <p>The UK market shows significant growth potential across all scenarios, with average YoY growth ranging from 46.3% (Conservative) to 60.1% (Ambitious).</p>
+            </div>
+            <div class="insight-item">
+                <h3>Seasonal Patterns</h3>
+                <p>The UK market exhibits strong seasonality, with January, February, March, September, and October showing the highest growth potential.</p>
+            </div>
+            <div class="insight-item">
+                <h3>Flight Search Impact</h3>
+                <p>The substantial growth in flight searches from 2023 to 2024 is a major driver of the forecast, particularly for the first half of the year.</p>
+            </div>
+            <div class="insight-item">
+                <h3>Media Effectiveness</h3>
+                <p>The planned media impressions for 2025 are expected to have a moderate impact on query growth, with multipliers ranging from 1.02 to 1.08 across most months.</p>
+            </div>
+            <div class="insight-item">
+                <h3>Brand Health Considerations</h3>
+                <p>The UK market already has strong brand consideration (33.09%), with modest targets for growth in 2025. This results in a relatively small but positive brand health multiplier.</p>
+                <p><strong>Brand Health Metrics Definitions:</strong></p>
+                <ul>
+                    <li><strong>Awareness:</strong> Percentage of people from the UK market who are aware of Abu Dhabi</li>
+                    <li><strong>Consideration:</strong> Percentage of people who consider traveling to Abu Dhabi in the next 3 years</li>
+                    <li><strong>Intent:</strong> Percentage of people who consider traveling to Abu Dhabi in the next 12 months</li>
+                </ul>
+                <p>The high awareness level (92.70%) indicates that Abu Dhabi is well-known in the UK market. The consideration rate of 33.09% shows that a significant portion of those aware of Abu Dhabi are considering it as a travel destination within the next 3 years.</p>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <h2>Detailed Forecast Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>2024 Queries</th>
+                        <th>Conservative</th>
+                        <th>Moderate</th>
+                        <th>Ambitious</th>
+                        <th>Conservative YoY</th>
+                        <th>Moderate YoY</th>
+                        <th>Ambitious YoY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>January</td>
+                        <td>124.85</td>
+                        <td>173.82</td>
+                        <td>182.01</td>
+                        <td>190.20</td>
+                        <td>39.2%</td>
+                        <td>45.8%</td>
+                        <td>52.3%</td>
+                    </tr>
+                    <tr>
+                        <td>February</td>
+                        <td>98.80</td>
+                        <td>159.63</td>
+                        <td>167.12</td>
+                        <td>174.61</td>
+                        <td>61.6%</td>
+                        <td>69.2%</td>
+                        <td>76.7%</td>
+                    </tr>
+                    <tr>
+                        <td>March</td>
+                        <td>99.09</td>
+                        <td>158.92</td>
+                        <td>166.37</td>
+                        <td>173.82</td>
+                        <td>60.4%</td>
+                        <td>67.9%</td>
+                        <td>75.4%</td>
+                    </tr>
+                    <tr>
+                        <td>April</td>
+                        <td>92.34</td>
+                        <td>142.66</td>
+                        <td>149.35</td>
+                        <td>156.04</td>
+                        <td>54.5%</td>
+                        <td>61.7%</td>
+                        <td>69.0%</td>
+                    </tr>
+                    <tr>
+                        <td>May</td>
+                        <td>86.94</td>
+                        <td>144.58</td>
+                        <td>151.36</td>
+                        <td>158.14</td>
+                        <td>66.3%</td>
+                        <td>74.1%</td>
+                        <td>81.9%</td>
+                    </tr>
+                    <tr>
+                        <td>June</td>
+                        <td>82.80</td>
+                        <td>123.38</td>
+                        <td>129.15</td>
+                        <td>134.92</td>
+                        <td>49.0%</td>
+                        <td>56.0%</td>
+                        <td>63.0%</td>
+                    </tr>
+                    <tr>
+                        <td>July</td>
+                        <td>86.15</td>
+                        <td>121.05</td>
+                        <td>126.72</td>
+                        <td>132.39</td>
+                        <td>40.5%</td>
+                        <td>47.1%</td>
+                        <td>53.7%</td>
+                    </tr>
+                    <tr>
+                        <td>August</td>
+                        <td>92.83</td>
+                        <td>113.37</td>
+                        <td>118.68</td>
+                        <td>124.00</td>
+                        <td>22.1%</td>
+                        <td>27.9%</td>
+                        <td>33.6%</td>
+                    </tr>
+                    <tr>
+                        <td>September</td>
+                        <td>99.68</td>
+                        <td>158.07</td>
+                        <td>165.48</td>
+                        <td>172.89</td>
+                        <td>58.6%</td>
+                        <td>66.0%</td>
+                        <td>73.4%</td>
+                    </tr>
+                    <tr>
+                        <td>October</td>
+                        <td>110.86</td>
+                        <td>175.69</td>
+                        <td>183.94</td>
+                        <td>192.19</td>
+                        <td>58.5%</td>
+                        <td>66.0%</td>
+                        <td>73.4%</td>
+                    </tr>
+                    <tr>
+                        <td>November</td>
+                        <td>97.24</td>
+                        <td>106.45</td>
+                        <td>111.41</td>
+                        <td>116.37</td>
+                        <td>9.5%</td>
+                        <td>14.6%</td>
+                        <td>19.7%</td>
+                    </tr>
+                    <tr>
+                        <td>December</td>
+                        <td>99.18</td>
+                        <td>135.19</td>
+                        <td>141.53</td>
+                        <td>147.87</td>
+                        <td>36.3%</td>
+                        <td>42.7%</td>
+                        <td>49.1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Average</strong></td>
+                        <td><strong>97.56</strong></td>
+                        <td><strong>142.73</strong></td>
+                        <td><strong>149.43</strong></td>
+                        <td><strong>156.12</strong></td>
+                        <td><strong>46.3%</strong></td>
+                        <td><strong>53.2%</strong></td>
+                        <td><strong>60.1%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Chart data
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const queries2024 = [124.85, 98.80, 99.09, 92.34, 86.94, 82.80, 86.15, 92.83, 99.68, 110.86, 97.24, 99.18];
+        const conservativeForecast = [173.82, 159.63, 158.92, 142.66, 144.58, 123.38, 121.05, 113.37, 158.07, 175.69, 106.45, 135.19];
+        const moderateForecast = [182.01, 167.12, 166.37, 149.35, 151.36, 129.15, 126.72, 118.68, 165.48, 183.94, 111.41, 141.53];
+        const ambitiousForecast = [190.20, 174.61, 173.82, 156.04, 158.14, 134.92, 132.39, 124.00, 172.89, 192.19, 116.37, 147.87];
+
+        // Create chart
+        const ctx = document.getElementById('forecastChart').getContext('2d');
+        const forecastChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: '2024 Actual',
+                        data: queries2024,
+                        borderColor: '#777777',
+                        backgroundColor: 'rgba(119, 119, 119, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Conservative Forecast',
+                        data: conservativeForecast,
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Moderate Forecast',
+                        data: moderateForecast,
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Ambitious Forecast',
+                        data: ambitiousForecast,
+                        borderColor: '#FF9800',
+                        backgroundColor: 'rgba(255, 152, 0, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'UK Travel Queries Forecast 2025',
+                        font: {
+                            size: 18
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Indexed Queries'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+UK Travel Queries 2025 Forecast - Updated with Improved Brand Metrics,,,,,,,,,
+,,,,,,,,,
+Month,2024 Actual,Conservative,Moderate,Ambitious,ARIMA,Conservative YoY,Moderate YoY,Ambitious YoY,ARIMA YoY
+January,124.85,132.84,140.09,147.34,99.11,6.4%,12.2%,18.0%,-20.6%
+February,98.80,110.31,116.37,122.43,99.10,11.7%,17.8%,23.9%,0.3%
+March,99.09,115.46,121.81,128.15,99.09,16.5%,22.9%,29.3%,0.0%
+April,92.34,92.27,97.33,102.38,99.09,-0.1%,5.4%,10.9%,7.3%
+May,86.94,83.75,88.33,92.92,99.09,-3.7%,1.6%,6.9%,14.0%
+June,82.80,75.98,80.16,84.35,99.09,-8.2%,-3.2%,1.9%,19.7%
+July,86.15,80.44,84.87,89.30,99.09,-6.6%,-1.5%,3.7%,15.0%
+August,92.83,90.96,95.97,100.97,99.09,-2.0%,3.4%,8.8%,6.7%
+September,99.68,110.90,116.99,123.07,99.09,11.3%,17.4%,23.5%,-0.6%
+October,110.86,134.59,141.94,149.28,99.09,21.4%,28.0%,34.7%,-10.6%
+November,97.24,102.26,107.87,113.49,99.09,5.2%,10.9%,16.7%,1.9%
+December,99.18,115.57,121.92,128.28,99.09,16.5%,22.9%,29.3%,-0.1%
+Average,97.56,103.78,109.47,115.16,99.09,6.4%,12.2%,18.0%,1.6%
+,,,,,,,,,
+Forecast Parameters,,,,,,,,,
+,Conservative,Moderate,Ambitious,Notes,,,,,
+Base Growth Factor,2%,5%,8%,"Adjusted downward for UK market maturity",,,,,
+Media Effectiveness Multiplier,0.05,0.08,0.12,"Reduced to account for UK market maturity",,,,,
+Flight Search Correlation,0.01,0.03,0.05,"Reduced to temper the impact of high flight search growth",,,,,
+Brand Health Coefficient,0.10,0.15,0.20,"Reduced due to already high brand health metrics in UK",,,,,
+,,,,,,,,,
+Enhanced Brand Metrics,,,,,,,,,
+Quarter,Consideration,Intent,Intent/Consideration Ratio,Conversion Efficiency Factor,,,,,
+Q4 2024,33.09%,22.10%,0.67,1.00,,,,,
+Q4 2025 (Target),35.00%,23.20%,0.66,1.00,,,,,
+YoY Change,5.8%,5.0%,-0.9%,0.0%,,,,,
+,,,,,,,,,
+Key Insights,,,,,,,,,
+1. The updated model with weighted Intent (70%) and Consideration (30%) shows a modest positive impact on the forecast compared to the previous model.,,,,,,,,,
+2. The Brand Health Multiplier increased from 1.00 to 1.02, resulting in higher forecasts across all scenarios.,,,,,,,,,
+3. The forecast shows a distinct monthly pattern with strong growth in Q1 and Q4, and a dip in Q2-Q3.,,,,,,,,,
+4. The Intent/Consideration ratio is projected to remain relatively stable from Q4 2024 (0.67) to Q4 2025 (0.66).,,,,,,,,,
+5. The multi-factor approach with enhanced brand metrics shows significantly higher growth (6.4% to 18.0%) compared to the ARIMA model (1.6%).,,,,,,,,,
+,,,,,,,,,
+Comparison with Previous Enhanced Model,,,,,,,,,
+1. Higher Overall Growth: Average YoY growth increased from 1.6% to 6.4% in Conservative, 8.2% to 12.2% in Moderate, and 13.9% to 18.0% in Ambitious.,,,,,,,,,
+2. More Pronounced Seasonality: Higher peaks in high-seasonality months and lower troughs in low-seasonality months.,,,,,,,,,
+3. Brand Health Impact: Brand Health Multiplier increased from 1.00 to 1.02, reflecting the higher weight given to Intent growth.,,,,,,,,,
+4. Conversion Efficiency: Added factor provides more nuanced view of the relationship between Consideration and Intent.,,,,,,,,,
+,,,,,,,,,
+Data Sources,,,,,,,,,
+- Historical Queries: Travel_Queries_Forecast_UK.csv,,,,,,,,,
+- Flight Searches: Flight-searches_UK.csv,,,,,,,,,
+- Media Impressions: Impressions_UK.csv,,,,,,,,,
+- Brand Health: Brand-Health_UK.csv,,,,,,,,,
+,,,,,,,,,
+Notes,,,,,,,,,
+- All values are indexed to a baseline of 100 representing the average monthly query volume in 2023.,,,,,,,,,
+- YoY Growth represents the percentage change from 2024 to 2025 for each scenario.,,,,,,,,,
+- The ARIMA forecast uses a (1,1,1) model with outlier detection and adjustment.,,,,,,,,,
+- Forecasts have been calibrated based on January 2025 actual data (124.35).,,,,,,,,,
+- The enhanced model uses a weighted approach for brand metrics: Intent (70%) and Consideration (30%).,,,,,,,,,
+- For detailed methodology and rationale, see UK_Enhanced_Forecast_Rationale_Updated.md,,,,,,,,,

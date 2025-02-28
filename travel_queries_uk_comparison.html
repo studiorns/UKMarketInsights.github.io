@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Travel Queries Forecast Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .chart-container {
+            margin-top: 30px;
+            margin-bottom: 50px;
+            height: 500px;
+        }
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .metric-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            width: calc(33% - 20px);
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .metric-card h3 {
+            margin-top: 0;
+            color: #555;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0066cc;
+            margin: 10px 0;
+        }
+        .metric-description {
+            color: #777;
+            font-size: 14px;
+        }
+        .comparison {
+            margin-top: 40px;
+        }
+        .comparison-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .comparison-item:last-child {
+            border-bottom: none;
+        }
+        .table-container {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .parameter-changes {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UK Travel Queries Forecast Comparison</h1>
+        <p>This dashboard compares the original forecast with a more conservative forecast for UK travel queries in 2025.</p>
+        
+        <div class="parameter-changes">
+            <h3>Parameter Adjustments in Conservative Forecast</h3>
+            <ul>
+                <li><strong>Base Growth Factor:</strong> Reduced from (5%, 10%, 15%) to (3%, 5%, 8%)</li>
+                <li><strong>Media Effectiveness Multiplier:</strong> Reduced from (0.10, 0.15, 0.20) to (0.08, 0.12, 0.15)</li>
+                <li><strong>Flight Search Correlation:</strong> Significantly reduced from (0.05, 0.10, 0.15) to (0.02, 0.04, 0.06) to temper the impact of high flight search growth</li>
+            </ul>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="comparisonChart"></canvas>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>Original Conservative YoY</h3>
+                <div class="metric-value">46.3%</div>
+                <div class="metric-description">Year-over-year growth in original Conservative scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>New Conservative YoY</h3>
+                <div class="metric-value">22.1%</div>
+                <div class="metric-description">Year-over-year growth in adjusted Conservative scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>Original Moderate YoY</h3>
+                <div class="metric-value">53.2%</div>
+                <div class="metric-description">Year-over-year growth in original Moderate scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>New Moderate YoY</h3>
+                <div class="metric-value">28.2%</div>
+                <div class="metric-description">Year-over-year growth in adjusted Moderate scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>Original Ambitious YoY</h3>
+                <div class="metric-value">60.1%</div>
+                <div class="metric-description">Year-over-year growth in original Ambitious scenario</div>
+            </div>
+            <div class="metric-card">
+                <h3>New Ambitious YoY</h3>
+                <div class="metric-value">36.8%</div>
+                <div class="metric-description">Year-over-year growth in adjusted Ambitious scenario</div>
+            </div>
+        </div>
+        
+        <div class="comparison">
+            <h2>Key Insights from Comparison</h2>
+            <div class="comparison-item">
+                <h3>More Realistic Growth Projections</h3>
+                <p>The adjusted forecast provides more realistic growth projections, with the Conservative scenario showing 22.1% YoY growth compared to 46.3% in the original forecast. This is more in line with typical market growth rates and closer to the France market's growth projections.</p>
+            </div>
+            <div class="comparison-item">
+                <h3>Reduced Impact of Flight Search Growth</h3>
+                <p>The original forecast was heavily influenced by the substantial growth in flight searches from 2023 to 2024. The adjusted forecast reduces the correlation between flight search growth and query growth to provide a more balanced projection.</p>
+            </div>
+            <div class="comparison-item">
+                <h3>Seasonality Patterns Maintained</h3>
+                <p>Both forecasts maintain the same seasonality patterns, with January, February, March, September, and October showing the highest growth potential. This consistency reflects the underlying seasonal trends in the UK market.</p>
+            </div>
+            <div class="comparison-item">
+                <h3>Comparison to France Market</h3>
+                <p>The adjusted forecast brings the UK market growth projections closer to the France market (2.3% to 30.6%), while still reflecting the UK's stronger growth potential due to higher flight search growth and effective media planning.</p>
+            </div>
+            <div class="comparison-item">
+                <h3>Brand Health Considerations</h3>
+                <p>Both forecasts maintain the same brand health metrics definitions and multipliers, as the UK market already has strong brand consideration (33.09%) with modest targets for growth in 2025.</p>
+                <p><strong>Brand Health Metrics Definitions:</strong></p>
+                <ul>
+                    <li><strong>Awareness:</strong> Percentage of people from the UK market who are aware of Abu Dhabi</li>
+                    <li><strong>Consideration:</strong> Percentage of people who consider traveling to Abu Dhabi in the next 3 years</li>
+                    <li><strong>Intent:</strong> Percentage of people who consider traveling to Abu Dhabi in the next 12 months</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <h2>Detailed Comparison Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>2024 Queries</th>
+                        <th>Original Conservative</th>
+                        <th>New Conservative</th>
+                        <th>Original Moderate</th>
+                        <th>New Moderate</th>
+                        <th>Original Ambitious</th>
+                        <th>New Ambitious</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>January</td>
+                        <td>124.85</td>
+                        <td>173.82</td>
+                        <td>151.12</td>
+                        <td>182.01</td>
+                        <td>158.65</td>
+                        <td>190.20</td>
+                        <td>169.25</td>
+                    </tr>
+                    <tr>
+                        <td>February</td>
+                        <td>98.80</td>
+                        <td>159.63</td>
+                        <td>132.15</td>
+                        <td>167.12</td>
+                        <td>138.76</td>
+                        <td>174.61</td>
+                        <td>148.05</td>
+                    </tr>
+                    <tr>
+                        <td>March</td>
+                        <td>99.09</td>
+                        <td>158.92</td>
+                        <td>133.56</td>
+                        <td>166.37</td>
+                        <td>140.24</td>
+                        <td>173.82</td>
+                        <td>149.59</td>
+                    </tr>
+                    <tr>
+                        <td>April</td>
+                        <td>92.34</td>
+                        <td>142.66</td>
+                        <td>109.32</td>
+                        <td>149.35</td>
+                        <td>114.79</td>
+                        <td>156.04</td>
+                        <td>122.45</td>
+                    </tr>
+                    <tr>
+                        <td>May</td>
+                        <td>86.94</td>
+                        <td>144.58</td>
+                        <td>109.89</td>
+                        <td>151.36</td>
+                        <td>115.38</td>
+                        <td>158.14</td>
+                        <td>123.08</td>
+                    </tr>
+                    <tr>
+                        <td>June</td>
+                        <td>82.80</td>
+                        <td>123.38</td>
+                        <td>98.05</td>
+                        <td>129.15</td>
+                        <td>102.95</td>
+                        <td>134.92</td>
+                        <td>109.82</td>
+                    </tr>
+                    <tr>
+                        <td>July</td>
+                        <td>86.15</td>
+                        <td>121.05</td>
+                        <td>96.10</td>
+                        <td>126.72</td>
+                        <td>100.91</td>
+                        <td>132.39</td>
+                        <td>107.63</td>
+                    </tr>
+                    <tr>
+                        <td>August</td>
+                        <td>92.83</td>
+                        <td>113.37</td>
+                        <td>99.56</td>
+                        <td>118.68</td>
+                        <td>104.54</td>
+                        <td>124.00</td>
+                        <td>111.51</td>
+                    </tr>
+                    <tr>
+                        <td>September</td>
+                        <td>99.68</td>
+                        <td>158.07</td>
+                        <td>129.97</td>
+                        <td>165.48</td>
+                        <td>136.47</td>
+                        <td>172.89</td>
+                        <td>145.57</td>
+                    </tr>
+                    <tr>
+                        <td>October</td>
+                        <td>110.86</td>
+                        <td>175.69</td>
+                        <td>150.10</td>
+                        <td>183.94</td>
+                        <td>157.60</td>
+                        <td>192.19</td>
+                        <td>168.11</td>
+                    </tr>
+                    <tr>
+                        <td>November</td>
+                        <td>97.24</td>
+                        <td>106.45</td>
+                        <td>100.67</td>
+                        <td>111.41</td>
+                        <td>105.71</td>
+                        <td>116.37</td>
+                        <td>112.76</td>
+                    </tr>
+                    <tr>
+                        <td>December</td>
+                        <td>99.18</td>
+                        <td>135.19</td>
+                        <td>119.02</td>
+                        <td>141.53</td>
+                        <td>124.97</td>
+                        <td>147.87</td>
+                        <td>133.30</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Average</strong></td>
+                        <td><strong>97.56</strong></td>
+                        <td><strong>142.73</strong></td>
+                        <td><strong>119.13</strong></td>
+                        <td><strong>149.43</strong></td>
+                        <td><strong>125.08</strong></td>
+                        <td><strong>156.12</strong></td>
+                        <td><strong>133.43</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Chart data
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const queries2024 = [124.85, 98.80, 99.09, 92.34, 86.94, 82.80, 86.15, 92.83, 99.68, 110.86, 97.24, 99.18];
+        
+        // Original forecast data
+        const originalConservative = [173.82, 159.63, 158.92, 142.66, 144.58, 123.38, 121.05, 113.37, 158.07, 175.69, 106.45, 135.19];
+        const originalModerate = [182.01, 167.12, 166.37, 149.35, 151.36, 129.15, 126.72, 118.68, 165.48, 183.94, 111.41, 141.53];
+        const originalAmbitious = [190.20, 174.61, 173.82, 156.04, 158.14, 134.92, 132.39, 124.00, 172.89, 192.19, 116.37, 147.87];
+        
+        // New conservative forecast data
+        const newConservative = [151.12, 132.15, 133.56, 109.32, 109.89, 98.05, 96.10, 99.56, 129.97, 150.10, 100.67, 119.02];
+        const newModerate = [158.65, 138.76, 140.24, 114.79, 115.38, 102.95, 100.91, 104.54, 136.47, 157.60, 105.71, 124.97];
+        const newAmbitious = [169.25, 148.05, 149.59, 122.45, 123.08, 109.82, 107.63, 111.51, 145.57, 168.11, 112.76, 133.30];
+
+        // Create chart
+        const ctx = document.getElementById('comparisonChart').getContext('2d');
+        const comparisonChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: '2024 Actual',
+                        data: queries2024,
+                        borderColor: '#777777',
+                        backgroundColor: 'rgba(119, 119, 119, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Original Conservative',
+                        data: originalConservative,
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1,
+                        borderDash: [5, 5]
+                    },
+                    {
+                        label: 'New Conservative',
+                        data: newConservative,
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Original Moderate',
+                        data: originalModerate,
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1,
+                        borderDash: [5, 5]
+                    },
+                    {
+                        label: 'New Moderate',
+                        data: newModerate,
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Original Ambitious',
+                        data: originalAmbitious,
+                        borderColor: '#FF9800',
+                        backgroundColor: 'rgba(255, 152, 0, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1,
+                        borderDash: [5, 5]
+                    },
+                    {
+                        label: 'New Ambitious',
+                        data: newAmbitious,
+                        borderColor: '#FF9800',
+                        backgroundColor: 'rgba(255, 152, 0, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'UK Travel Queries Forecast Comparison',
+                        font: {
+                            size: 18
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Indexed Queries'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -150,7 +150,7 @@ function initCharts() {
                     fill: false
                 },
                 {
-                    label: '2025 Moderate',
+                    label: '2025 Moderate (+16.8%)',
                     data: ukData.travelQueries['2025']['moderate'],
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.1)',
@@ -508,8 +508,21 @@ function updateQueriesChart(scenario) {
             fill: false
         });
         
+        let growthLabel = '';
+        switch(scenario) {
+            case 'conservative':
+                growthLabel = ' (+10.8%)';
+                break;
+            case 'moderate':
+                growthLabel = ' (+16.8%)';
+                break;
+            case 'ambitious':
+                growthLabel = ' (+22.5%)';
+                break;
+        }
+        
         queriesChart.data.datasets.push({
-            label: `2025 ${scenario.charAt(0).toUpperCase() + scenario.slice(1)}`,
+            label: `2025 ${scenario.charAt(0).toUpperCase() + scenario.slice(1)}${growthLabel}`,
             data: ukData.travelQueries['2025'][scenario],
             borderColor: 'rgba(75, 192, 192, 1)',
             backgroundColor: 'rgba(75, 192, 192, 0.1)',
